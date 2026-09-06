@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-raiz-cream text-raiz-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif;
+    text-wrap: balance;
+  }
+
+  /* Consistent scroll offset so anchored sections clear the fixed header */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+
+  ::selection {
+    background-color: theme('colors.raiz.gold');
+    color: theme('colors.raiz.green');
+  }
+
+  :focus-visible {
+    outline: 2px solid theme('colors.raiz.gold');
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  .container-raiz {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold
+           uppercase tracking-widest2 transition duration-300 ease-out-soft;
+  }
+
+  .btn-gold {
+    @apply btn bg-raiz-gold text-raiz-green hover:bg-raiz-gold-400 hover:-translate-y-0.5
+           shadow-[0_10px_30px_-12px_rgba(201,146,42,0.7)];
+  }
+
+  .btn-outline {
+    @apply btn border border-raiz-cream/40 text-raiz-cream hover:border-raiz-gold hover:text-raiz-gold;
+  }
+
+  .btn-outline-dark {
+    @apply btn border border-raiz-green/25 text-raiz-green hover:border-raiz-gold hover:text-raiz-gold-600;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-widest2 text-raiz-gold-600;
+  }
+
+  .eyebrow-light {
+    @apply inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-widest2 text-raiz-gold-400;
+  }
+
+  .section-title {
+    @apply mt-4 font-serif text-3xl leading-tight sm:text-4xl md:text-[2.75rem];
+  }
+}
+
+@layer utilities {
+  /* Scroll-reveal: hidden until observed, then eased into place */
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .text-shadow-hero {
+    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.45);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .animate-kenburns,
+  .animate-fade-up {
+    animation: none !important;
+  }
+}

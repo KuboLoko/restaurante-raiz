@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/jpeg" href="/img/logo.jpg" />
+    <link rel="apple-touch-icon" href="/img/logo.jpg" />
+    <meta name="theme-color" content="#122017" />
+
+    <title>RAIZ Restaurante — Cozinha portuguesa de raiz, no Barreiro</title>
+    <meta
+      name="description"
+      content="RAIZ Restaurante — cozinha portuguesa contemporânea no Barreiro. Ingredientes frescos, tradição com um toque moderno. Reserve a sua mesa."
+    />
+    <link rel="canonical" href="https://restaurante-raiz.vercel.app/" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:site_name" content="RAIZ Restaurante" />
+    <meta property="og:title" content="RAIZ Restaurante — Cozinha portuguesa de raiz, no Barreiro" />
+    <meta
+      property="og:description"
+      content="Cozinha portuguesa contemporânea no Barreiro. Ingredientes frescos, tradição com um toque moderno. Reserve a sua mesa."
+    />
+    <meta property="og:image" content="https://restaurante-raiz.vercel.app/img/hero.jpg" />
+    <meta property="og:locale" content="pt_PT" />
+    <meta property="og:url" content="https://restaurante-raiz.vercel.app/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="RAIZ Restaurante — Cozinha portuguesa de raiz, no Barreiro" />
+    <meta
+      name="twitter:description"
+      content="Cozinha portuguesa contemporânea no Barreiro. Reserve a sua mesa."
+    />
+    <meta name="twitter:image" content="https://restaurante-raiz.vercel.app/img/hero.jpg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Structured data: Restaurant -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "RAIZ Restaurante",
+        "servesCuisine": "Portuguesa contemporânea",
+        "priceRange": "€€",
+        "image": "https://restaurante-raiz.vercel.app/img/hero.jpg",
+        "url": "https://restaurante-raiz.vercel.app/",
+        "telephone": "+351218265057",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "R. Capitães de Abril 41, Q.ta da Lomba",
+          "postalCode": "2830-189",
+          "addressLocality": "Barreiro",
+          "addressCountry": "PT"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.8",
+          "reviewCount": "187"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+            "opens": "12:30",
+            "closes": "14:30"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+            "opens": "19:30",
+            "closes": "22:30"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Friday", "Saturday"],
+            "opens": "12:30",
+            "closes": "15:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Friday", "Saturday"],
+            "opens": "19:30",
+            "closes": "23:00"
+          }
+        ],
+        "acceptsReservations": "True"
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

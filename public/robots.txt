@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://restaurante-raiz.vercel.app/sitemap.xml
