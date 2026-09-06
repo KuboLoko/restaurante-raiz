@@ -43,12 +43,18 @@ avaliações.
 
 ### Por fazer / a confirmar com o cliente
 
-- **Google Reserve:** `site.reserveUrl` aponta, por agora, para a ficha do Google.
-  Substituir pelo link directo de reserva (`google.com/maps/reserve/...`) quando
-  estiver activo.
-- **WhatsApp:** `site.whatsappNumber` usa o número fixo publicado. Trocar por um
-  número WhatsApp dedicado, se existir.
-- **Avaliações:** as três avaliações em `reviews` são exemplos assinalados com
-  `PLACEHOLDER`. Substituir por avaliações reais copiadas do perfil Google.
+- **⚠️ Google Reserve — NEEDS CLIENT CONFIRMATION:** `site.reserveUrl` aponta,
+  por agora, para a pesquisa genérica da ficha Google do RAIZ, **não** para o
+  link directo de "Reservar mesa" (Google Reserve, `google.com/maps/reserve/...`).
+  Confirmar com o cliente qual é o URL correcto de reserva e substituir. Não
+  adivinhar o link.
+- **⚠️ WhatsApp — a confirmar com o cliente:** `site.whatsappNumber` está a
+  `null` por defeito. Enquanto for `null`, o botão de WhatsApp fica escondido nas
+  secções Reservas/Contactos e mostra-se apenas o link `tel:`. Confirmar se o
+  cliente tem um número WhatsApp Business dedicado; se sim, colocar em
+  `site.whatsappNumber` (formato internacional sem "+" nem espaços, ex.
+  `351912345678`). **Não** assumir que o fixo publicado (21 826 5057) tem WhatsApp.
+- **Avaliações:** as três avaliações em `reviews` são reais, copiadas do perfil
+  Google do RAIZ (texto traduzido para pt-PT quando o original estava em inglês).
 - **Fotografia:** as imagens em `public/img/` vêm do Instagram do RAIZ. Trocar por
   fotografia de sala/ambiente quando disponível.

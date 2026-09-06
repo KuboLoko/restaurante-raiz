@@ -23,8 +23,12 @@ export const site = {
     href: 'tel:+351218265057',
   },
 
-  // Substituir por um número WhatsApp dedicado, se existir.
-  whatsappNumber: '351218265057',
+  // Confirm with client whether they have a dedicated WhatsApp Business number.
+  // If null, hide the WhatsApp button in the Reservations/Contact sections and
+  // show only the tel: link. Do NOT assume the published landline (21 826 5057)
+  // supports WhatsApp. Set to the number in international format without "+" or
+  // spaces (e.g. '351912345678') once confirmed.
+  whatsappNumber: null as string | null,
   whatsappText: 'Olá! Gostava de reservar uma mesa no RAIZ.',
 
   instagram: {
@@ -40,8 +44,10 @@ export const site = {
 
   priceRange: '20–25 € por pessoa',
 
-  // Google Reserve: quando a ficha do Google tiver o botão "Reservar mesa" activo,
-  // colar aqui o link directo (google.com/maps/reserve/...). Por agora aponta para a ficha.
+  // NEEDS CLIENT CONFIRMATION: verify this is the correct Google Reserve deep link.
+  // This currently points to the generic Google Business profile search, NOT the
+  // "Reservar mesa" (Google Reserve) deep link (google.com/maps/reserve/...).
+  // Replace with the real reservation URL once confirmed with the client.
   reserveUrl: 'https://www.google.com/maps/search/?api=1&query=RAIZ+Restaurante+Barreiro',
 
   maps: {
@@ -141,26 +147,28 @@ export const galleryImages = [
 
 export type Review = {
   name: string
+  /** Free-form sub-caption: source and reviewer context (e.g. "Google · Guia Local · 12 críticas"). */
+  meta: string
   text: string
-  date: string
 }
 
-// PLACEHOLDER: substituir por avaliações reais copiadas do perfil Google do RAIZ.
+// Avaliações reais do perfil Google do RAIZ. Texto traduzido para pt-PT quando
+// o original estava em inglês; nomes e contexto do avaliador mantidos fiéis.
 export const reviews: Review[] = [
   {
-    name: 'Ana R.',
-    date: 'Google · há 2 semanas',
-    text: 'Cozinha portuguesa com uma volta moderna muito bem conseguida. As vieiras na brasa são obrigatórias e o serviço é atento sem ser formal. Voltamos de certeza.',
+    name: 'Anastasiia Krokhmaleva',
+    meta: 'Google · Guia Local · 12 críticas',
+    text: 'Espaço simpático e com pessoal atencioso. Ficámos verdadeiramente surpreendidos com o sabor de tudo! A comida estava incrivelmente fresca e deliciosa.',
   },
   {
-    name: 'João M.',
-    date: 'Google · há 1 mês',
-    text: 'Descoberta do Barreiro. Ambiente acolhedor, pratos com identidade e uma relação qualidade-preço difícil de encontrar. O leite-creme queimado vale a viagem.',
+    name: 'Joana Aiveca Palma',
+    meta: 'Google',
+    text: 'Um sítio fantástico para provar a verdadeira cozinha portuguesa com um toque moderno.',
   },
   {
-    name: 'Sofia T.',
-    date: 'Google · há 1 mês',
-    text: 'Sente-se o cuidado em cada detalhe, do pão à sobremesa. Reservei pelo Google e foi tudo simples. Já é o nosso sítio para levar visitas.',
+    name: 'Ricardo',
+    meta: 'Google · Guia Local · 68 críticas',
+    text: 'O melhor restaurante de Portugal. Ingredientes frescos, uma excelente volta moderna à cozinha portuguesa, óptimo ambiente, óptimo serviço — e muito mais!',
   },
 ]
 
@@ -172,6 +180,7 @@ export const navLinks = [
   { href: '#contactos', label: 'Contactos' },
 ]
 
-export const whatsappHref = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(
-  site.whatsappText,
-)}`
+/** wa.me link, or null when no WhatsApp number is configured (see site.whatsappNumber). */
+export const whatsappHref = site.whatsappNumber
+  ? `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.whatsappText)}`
+  : null

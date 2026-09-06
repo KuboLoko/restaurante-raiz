@@ -22,8 +22,9 @@ export function Reservations() {
           <p className="eyebrow-light justify-center">Reservas</p>
           <h2 className="section-title text-raiz-cream">Guarde a sua mesa no RAIZ</h2>
           <p className="mt-5 text-base leading-relaxed text-raiz-cream/80 sm:text-lg">
-            Reserve em segundos pelo Google, ou fale connosco directamente por WhatsApp ou telefone.
-            Para grupos grandes e eventos, contacte-nos e tratamos de tudo.
+            Reserve em segundos pelo Google, ou fale connosco directamente
+            {whatsappHref ? ' por WhatsApp ou telefone' : ' por telefone'}. Para grupos grandes e
+            eventos, contacte-nos e tratamos de tudo.
           </p>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -36,15 +37,17 @@ export function Reservations() {
               Reservar pelo Google
               <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-outline w-full sm:w-auto"
-            >
-              <WhatsappIcon className="h-4 w-4" />
-              WhatsApp
-            </a>
+            {whatsappHref && (
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline w-full sm:w-auto"
+              >
+                <WhatsappIcon className="h-4 w-4" />
+                WhatsApp
+              </a>
+            )}
           </div>
 
           <a

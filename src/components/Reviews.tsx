@@ -44,7 +44,7 @@ export function Reviews() {
               </blockquote>
               <figcaption className="mt-6 border-t border-raiz-cream/10 pt-4">
                 <span className="block font-serif text-lg text-raiz-cream">{review.name}</span>
-                <span className="text-xs text-raiz-cream/55">{review.date}</span>
+                <span className="text-xs text-raiz-cream/55">{review.meta}</span>
               </figcaption>
             </Reveal>
           ))}
