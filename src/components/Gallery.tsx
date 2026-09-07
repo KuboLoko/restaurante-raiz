@@ -1,19 +1,23 @@
 import { Reveal } from './Reveal'
 import { RootMark } from './Icons'
-import { galleryImages, site } from '../lib/site'
+import { site } from '../lib/site'
+import { useGallery, useI18n } from '../lib/i18n'
 
 export function Gallery() {
+  const { t } = useI18n()
+  const images = useGallery()
+
   return (
     <section id="galeria" className="bg-raiz-cream py-24 sm:py-32">
       <div className="container-raiz">
         <Reveal className="max-w-2xl">
           <p className="eyebrow">
             <RootMark className="text-raiz-gold-600" />
-            Galeria
+            {t.gallery.eyebrow}
           </p>
-          <h2 className="section-title text-raiz-green">Um bocadinho da sala e da cozinha</h2>
+          <h2 className="section-title text-raiz-green">{t.gallery.title}</h2>
           <p className="mt-5 text-base leading-relaxed text-raiz-ink/75 sm:text-lg">
-            Pratos, produto e ambiente. Para ver o dia a dia do RAIZ, siga-nos em{' '}
+            {t.gallery.introBefore}
             <a
               href={site.instagram.url}
               target="_blank"
@@ -22,12 +26,12 @@ export function Gallery() {
             >
               {site.instagram.handle}
             </a>
-            .
+            {t.gallery.introAfter}
           </p>
         </Reveal>
 
         <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
-          {galleryImages.map((img, i) => (
+          {images.map((img, i) => (
             <Reveal
               key={img.src}
               delay={(i % 3) * 80}

@@ -1,8 +1,16 @@
 import { Reveal } from './Reveal'
 import { StarIcon, RootMark } from './Icons'
-import { reviews, site } from '../lib/site'
+import { site } from '../lib/site'
+import { useI18n, useReviews } from '../lib/i18n'
 
 export function Reviews() {
+  const { t } = useI18n()
+  const reviews = useReviews()
+
+  const title = t.reviews.title
+    .replace('{rating}', t.ratingValue)
+    .replace('{count}', String(site.rating.count))
+
   return (
     <section id="avaliacoes" className="bg-raiz-green py-24 text-raiz-cream sm:py-32">
       <div className="container-raiz">
@@ -10,11 +18,9 @@ export function Reviews() {
           <div className="max-w-2xl">
             <p className="eyebrow-light">
               <RootMark className="text-raiz-gold-400" />
-              Quem nos visita
+              {t.reviews.eyebrow}
             </p>
-            <h2 className="section-title text-raiz-cream">
-              {site.rating.value.toString().replace('.', ',')} estrelas, {site.rating.count} avaliações
-            </h2>
+            <h2 className="section-title text-raiz-cream">{title}</h2>
           </div>
           <a
             href={site.rating.url}
@@ -22,7 +28,7 @@ export function Reviews() {
             rel="noopener noreferrer"
             className="text-sm font-semibold uppercase tracking-widest2 text-raiz-gold-400 underline-offset-4 hover:underline"
           >
-            Ver no Google
+            {t.reviews.seeGoogle}
           </a>
         </Reveal>
 
@@ -34,7 +40,7 @@ export function Reviews() {
               delay={i * 100}
               className="flex h-full flex-col rounded-2xl bg-raiz-green-700/60 p-7 ring-1 ring-raiz-cream/10"
             >
-              <div className="flex items-center gap-1 text-raiz-gold-400" aria-label="5 em 5 estrelas">
+              <div className="flex items-center gap-1 text-raiz-gold-400" aria-label={t.reviews.ariaStars}>
                 {Array.from({ length: 5 }).map((_, s) => (
                   <StarIcon key={s} className="h-4 w-4" />
                 ))}

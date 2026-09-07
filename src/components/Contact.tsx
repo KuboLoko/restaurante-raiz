@@ -1,24 +1,27 @@
 import { Reveal } from './Reveal'
 import { MapPinIcon, PhoneIcon, ClockIcon, InstagramIcon, RootMark } from './Icons'
 import { site } from '../lib/site'
+import { useI18n } from '../lib/i18n'
 
 export function Contact() {
+  const { t } = useI18n()
+
   return (
     <section id="contactos" className="bg-raiz-green py-24 text-raiz-cream sm:py-32">
       <div className="container-raiz grid gap-14 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <p className="eyebrow-light">
             <RootMark className="text-raiz-gold-400" />
-            Contactos &amp; morada
+            {t.contact.eyebrow}
           </p>
-          <h2 className="section-title text-raiz-cream">Encontre-nos no Barreiro</h2>
+          <h2 className="section-title text-raiz-cream">{t.contact.title}</h2>
 
           <ul className="mt-8 space-y-6">
             <li className="flex gap-4">
               <MapPinIcon className="mt-0.5 h-5 w-5 shrink-0 text-raiz-gold-400" />
               <div>
                 <span className="block text-xs uppercase tracking-widest2 text-raiz-cream/50">
-                  Morada
+                  {t.contact.addressLabel}
                 </span>
                 <a
                   href={site.maps.link}
@@ -37,7 +40,7 @@ export function Contact() {
               <PhoneIcon className="mt-0.5 h-5 w-5 shrink-0 text-raiz-gold-400" />
               <div>
                 <span className="block text-xs uppercase tracking-widest2 text-raiz-cream/50">
-                  Telefone
+                  {t.contact.phoneLabel}
                 </span>
                 <a
                   href={site.phone.href}
@@ -52,14 +55,15 @@ export function Contact() {
               <ClockIcon className="mt-0.5 h-5 w-5 shrink-0 text-raiz-gold-400" />
               <div>
                 <span className="block text-xs uppercase tracking-widest2 text-raiz-cream/50">
-                  Horário
+                  {t.contact.hoursLabel}
                 </span>
                 <p className="mt-1 leading-relaxed text-raiz-cream/90">
-                  Seg&ndash;Qui 12:30&ndash;14:30 · 19:30&ndash;22:30
-                  <br />
-                  Sex&ndash;Sáb 12:30&ndash;15:00 · 19:30&ndash;23:00
-                  <br />
-                  Domingo encerrado
+                  {t.contact.hoursLines.map((line, i) => (
+                    <span key={i}>
+                      {line}
+                      {i < t.contact.hoursLines.length - 1 && <br />}
+                    </span>
+                  ))}
                 </p>
               </div>
             </li>
@@ -68,7 +72,7 @@ export function Contact() {
               <InstagramIcon className="mt-0.5 h-5 w-5 shrink-0 text-raiz-gold-400" />
               <div>
                 <span className="block text-xs uppercase tracking-widest2 text-raiz-cream/50">
-                  Instagram
+                  {t.contact.instagramLabel}
                 </span>
                 <a
                   href={site.instagram.url}
@@ -86,7 +90,7 @@ export function Contact() {
         <Reveal delay={120}>
           <div className="h-full min-h-[340px] overflow-hidden rounded-2xl ring-1 ring-raiz-cream/15">
             <iframe
-              title="Mapa — RAIZ Restaurante, Barreiro"
+              title={t.contact.mapTitle}
               src={site.maps.embed}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

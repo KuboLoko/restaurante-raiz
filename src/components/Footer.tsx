@@ -1,7 +1,9 @@
-import { navLinks, site } from '../lib/site'
+import { navSections, site } from '../lib/site'
+import { useI18n } from '../lib/i18n'
 import { InstagramIcon } from './Icons'
 
 export function Footer() {
+  const { t } = useI18n()
   const year = new Date().getFullYear()
 
   return (
@@ -22,22 +24,18 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-4 text-sm leading-relaxed">
-              {site.tagline}. {site.address.street}, {site.address.postal}.
+              {t.hero.eyebrow}. {site.address.street}, {site.address.postal}.
             </p>
           </div>
 
-          <nav aria-label="Rodapé" className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="transition-colors hover:text-raiz-gold"
-              >
-                {link.label}
+          <nav aria-label="RAIZ" className="flex flex-wrap gap-x-8 gap-y-3 text-sm">
+            {navSections.map((id) => (
+              <a key={id} href={`#${id}`} className="transition-colors hover:text-raiz-gold">
+                {t.nav[id]}
               </a>
             ))}
             <a href="#reservas" className="transition-colors hover:text-raiz-gold">
-              Reservas
+              {t.footer.reservas}
             </a>
           </nav>
 
@@ -54,10 +52,10 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col gap-2 border-t border-raiz-cream/10 pt-6 text-xs sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {year} {site.legalName}. Todos os direitos reservados.
+            © {year} {site.legalName}. {t.footer.rights}
           </p>
           <p>
-            Site por{' '}
+            {t.footer.madeBy}{' '}
             <a
               href="https://kuboloko.pt"
               target="_blank"

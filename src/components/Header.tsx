@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react'
-import { navLinks, site } from '../lib/site'
+import { navSections } from '../lib/site'
+import { useI18n } from '../lib/i18n'
+import { LangSwitcher } from './LangSwitcher'
 
 export function Header() {
+  const { t } = useI18n()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
 
@@ -30,7 +33,7 @@ export function Header() {
       }`}
     >
       <div className="container-raiz flex h-16 items-center justify-between sm:h-20">
-        <a href="#top" className="flex items-center gap-3" aria-label={`${site.legalName} — início`}>
+        <a href="#top" className="flex items-center gap-3" aria-label={t.header.homeAria}>
           <img
             src="/img/logo.jpg"
             alt=""
@@ -43,18 +46,19 @@ export function Header() {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex" aria-label="Navegação principal">
-          {navLinks.map((link) => (
+        <nav className="hidden items-center gap-8 md:flex" aria-label={t.header.navMain}>
+          {navSections.map((id) => (
             <a
-              key={link.href}
-              href={link.href}
+              key={id}
+              href={`#${id}`}
               className="text-sm font-medium text-raiz-cream/80 transition-colors hover:text-raiz-gold"
             >
-              {link.label}
+              {t.nav[id]}
             </a>
           ))}
+          <LangSwitcher className="ml-1" />
           <a href="#reservas" className="btn-gold !px-6 !py-3 !text-xs">
-            Reservar
+            {t.header.reservar}
           </a>
         </nav>
 
@@ -63,10 +67,10 @@ export function Header() {
           className="relative z-50 flex h-10 w-10 items-center justify-center rounded-full text-raiz-cream md:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
-          aria-label={open ? 'Fechar menu' : 'Abrir menu'}
+          aria-label={open ? t.header.closeMenu : t.header.openMenu}
           onClick={() => setOpen((v) => !v)}
         >
-          <span className="sr-only">Menu</span>
+          <span className="sr-only">{t.header.menuSr}</span>
           <div className="space-y-1.5">
             <span
               className={`block h-0.5 w-6 bg-current transition-transform duration-300 ${
@@ -99,24 +103,21 @@ export function Header() {
         >
           <nav
             className="container-raiz flex h-full flex-col justify-center gap-2"
-            aria-label="Navegação (telemóvel)"
+            aria-label={t.header.navMobile}
           >
-            {navLinks.map((link) => (
+            {navSections.map((id) => (
               <a
-                key={link.href}
-                href={link.href}
+                key={id}
+                href={`#${id}`}
                 onClick={() => setOpen(false)}
                 className="border-b border-raiz-cream/10 py-4 font-serif text-2xl text-raiz-cream transition-colors hover:text-raiz-gold"
               >
-                {link.label}
+                {t.nav[id]}
               </a>
             ))}
-            <a
-              href="#reservas"
-              onClick={() => setOpen(false)}
-              className="btn-gold mt-6 w-full"
-            >
-              Reservar mesa
+            <LangSwitcher className="mt-8 text-sm" />
+            <a href="#reservas" onClick={() => setOpen(false)} className="btn-gold mt-6 w-full">
+              {t.header.reservarMesa}
             </a>
           </nav>
         </div>

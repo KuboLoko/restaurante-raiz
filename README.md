@@ -20,6 +20,21 @@ npm run preview  # servir o build localmente
 npm run typecheck
 ```
 
+## Idiomas (PT · EN · ES)
+
+O site é trilingue. O idioma activo é escolhido por esta ordem: parâmetro
+`?lang=en` / `?lang=es` no URL → `localStorage` → idioma do browser → `pt`
+(por defeito). A escolha fica guardada e reflecte-se em `<html lang>`, no
+`<title>`, na meta description e no URL. Seletor **PT · EN · ES** no cabeçalho
+(desktop e menu móvel).
+
+- **Dados neutros** (números, links, caminhos de imagem, horas): [`src/lib/site.ts`](src/lib/site.ts)
+- **Todo o texto traduzível**: [`src/lib/i18n.tsx`](src/lib/i18n.tsx) — dicionários `pt` / `en` / `es`.
+  O TypeScript obriga os três a terem exactamente a mesma forma.
+- Menu, galeria e avaliações: a parte neutra (foto, autor) está em `site.ts`;
+  a parte traduzível (descrição, alt, texto) está em `i18n.tsx`, ligada por índice
+  (manter a mesma ordem nos dois ficheiros).
+
 ## Estrutura
 
 ```
@@ -28,18 +43,13 @@ src/
   App.tsx              composição das secções
   index.css            Tailwind + tokens e utilitários
   lib/
-    site.ts            CONTEÚDO editável: morada, horário, menu, avaliações…
+    site.ts            dados neutros (morada, horas, fotos, links)
+    i18n.tsx           traduções PT/EN/ES + provider + hooks (useI18n, useMenu…)
     useReveal.ts       hook de animação on-scroll (IntersectionObserver)
   components/
-    Header, Hero, About, Menu, Gallery, Reviews,
-    Hours, Reservations, Contact, Footer, Reveal, Icons
+    Header, Hero, About, Menu, Gallery, Reviews, Hours,
+    Reservations, Contact, Footer, Reveal, Icons, LangSwitcher
 ```
-
-## Editar conteúdo
-
-Quase tudo vive em [`src/lib/site.ts`](src/lib/site.ts): morada, telefone,
-Instagram, classificação Google, preços, horário, pratos em destaque, galeria e
-avaliações.
 
 ## CLIENT QUESTIONS — confirmar antes do lançamento
 

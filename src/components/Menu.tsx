@@ -1,27 +1,30 @@
 import { Reveal } from './Reveal'
 import { RootMark } from './Icons'
-import { menu, site } from '../lib/site'
+import { site } from '../lib/site'
+import { useI18n, useMenu } from '../lib/i18n'
 
 export function Menu() {
+  const { t } = useI18n()
+  const dishes = useMenu()
+
   return (
     <section id="menu" className="bg-raiz-green py-24 text-raiz-cream sm:py-32">
       <div className="container-raiz">
         <Reveal className="max-w-2xl">
           <p className="eyebrow-light">
             <RootMark className="text-raiz-gold-400" />
-            À mesa
+            {t.menu.eyebrow}
           </p>
-          <h2 className="section-title text-raiz-cream">Alguns favoritos da casa</h2>
+          <h2 className="section-title text-raiz-cream">{t.menu.title}</h2>
           <p className="mt-5 text-base leading-relaxed text-raiz-cream/75 sm:text-lg">
-            Uma amostra do que servimos com mais orgulho. A carta completa muda com a época e está
-            sempre disponível no restaurante. Refeição média de {site.priceRange}.
+            {t.menu.intro.replace('{price}', site.priceRange)}
           </p>
         </Reveal>
 
         <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {menu.map((dish, i) => (
+          {dishes.map((dish, i) => (
             <Reveal
-              key={dish.name}
+              key={dish.image}
               as="article"
               delay={(i % 3) * 90}
               className="group flex flex-col overflow-hidden rounded-2xl bg-raiz-green-700/60 ring-1 ring-raiz-cream/10 transition duration-300 ease-out-soft hover:-translate-y-1 hover:ring-raiz-gold/40"
@@ -46,20 +49,16 @@ export function Menu() {
                     </span>
                   )}
                 </div>
-                <p className="mt-3 text-sm leading-relaxed text-raiz-cream/70">
-                  {dish.description}
-                </p>
+                <p className="mt-3 text-sm leading-relaxed text-raiz-cream/70">{dish.description}</p>
               </div>
             </Reveal>
           ))}
         </div>
 
         <Reveal className="mt-14 flex flex-col items-start gap-4 border-t border-raiz-cream/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-raiz-cream/60">
-            Também pode levantar (take away) ou pedir entrega ao domicílio.
-          </p>
+          <p className="text-sm text-raiz-cream/60">{t.menu.takeaway}</p>
           <a href="#reservas" className="btn-gold">
-            Reservar mesa
+            {t.header.reservarMesa}
           </a>
         </Reveal>
       </div>

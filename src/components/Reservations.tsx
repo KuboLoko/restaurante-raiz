@@ -1,8 +1,12 @@
 import { Reveal } from './Reveal'
 import { WhatsappIcon, PhoneIcon, ArrowIcon } from './Icons'
-import { site, whatsappHref } from '../lib/site'
+import { site, waHref } from '../lib/site'
+import { useI18n } from '../lib/i18n'
 
 export function Reservations() {
+  const { t } = useI18n()
+  const whatsappHref = waHref(t.wa.prefill)
+
   return (
     <section id="reservas" className="relative overflow-hidden py-24 text-raiz-cream sm:py-32">
       <div className="absolute inset-0 -z-10">
@@ -19,12 +23,10 @@ export function Reservations() {
 
       <div className="container-raiz">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow-light justify-center">Reservas</p>
-          <h2 className="section-title text-raiz-cream">Guarde a sua mesa no RAIZ</h2>
+          <p className="eyebrow-light justify-center">{t.reservations.eyebrow}</p>
+          <h2 className="section-title text-raiz-cream">{t.reservations.title}</h2>
           <p className="mt-5 text-base leading-relaxed text-raiz-cream/80 sm:text-lg">
-            Reserve em segundos pelo Google, ou fale connosco directamente
-            {whatsappHref ? ' por WhatsApp ou telefone' : ' por telefone'}. Para grupos grandes e
-            eventos, contacte-nos e tratamos de tudo.
+            {whatsappHref ? t.reservations.introWa : t.reservations.introNoWa}
           </p>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -34,7 +36,7 @@ export function Reservations() {
               rel="noopener noreferrer"
               className="btn-gold group w-full sm:w-auto"
             >
-              Reservar pelo Google
+              {t.reservations.reservarGoogle}
               <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
             {whatsappHref && (
@@ -45,7 +47,7 @@ export function Reservations() {
                 className="btn-outline w-full sm:w-auto"
               >
                 <WhatsappIcon className="h-4 w-4" />
-                WhatsApp
+                {t.reservations.whatsapp}
               </a>
             )}
           </div>
