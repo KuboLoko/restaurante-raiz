@@ -41,20 +41,37 @@ Quase tudo vive em [`src/lib/site.ts`](src/lib/site.ts): morada, telefone,
 Instagram, classificação Google, preços, horário, pratos em destaque, galeria e
 avaliações.
 
-### Por fazer / a confirmar com o cliente
+## CLIENT QUESTIONS — confirmar antes do lançamento
 
-- **⚠️ Google Reserve — NEEDS CLIENT CONFIRMATION:** `site.reserveUrl` aponta,
-  por agora, para a pesquisa genérica da ficha Google do RAIZ, **não** para o
-  link directo de "Reservar mesa" (Google Reserve, `google.com/maps/reserve/...`).
-  Confirmar com o cliente qual é o URL correcto de reserva e substituir. Não
-  adivinhar o link.
-- **⚠️ WhatsApp — a confirmar com o cliente:** `site.whatsappNumber` está a
-  `null` por defeito. Enquanto for `null`, o botão de WhatsApp fica escondido nas
-  secções Reservas/Contactos e mostra-se apenas o link `tel:`. Confirmar se o
-  cliente tem um número WhatsApp Business dedicado; se sim, colocar em
-  `site.whatsappNumber` (formato internacional sem "+" nem espaços, ex.
-  `351912345678`). **Não** assumir que o fixo publicado (21 826 5057) tem WhatsApp.
-- **Avaliações:** as três avaliações em `reviews` são reais, copiadas do perfil
-  Google do RAIZ (texto traduzido para pt-PT quando o original estava em inglês).
-- **Fotografia:** as imagens em `public/img/` vêm do Instagram do RAIZ. Trocar por
-  fotografia de sala/ambiente quando disponível.
+Quatro pontos por fechar com o cliente. Tudo o resto está pronto.
+
+1. **Pratos do menu.** A secção mostra agora 8 pratos, cada um com a fotografia
+   real correspondente (ficheiros em `public/img/menu-*.jpg`): Lingueirão à
+   pil-pil, Pica-pau de atum, Queijo da Maçussa, Couve à alhada, Arroz de forno,
+   Magret de pato, Nectarina com nata fresca, Torta do Tóni.
+   → Confirmar que estes 8 estão certos (nome e foto). Se **Vieiras na Braza**,
+   **Bacalhau à Brás** ou **Lomo Saltado** devem aparecer, enviar o **nome exacto
+   + fotografia** de cada um — não temos foto destes pratos no material actual.
+
+2. **Preços.** Neste momento não há preço por prato; a secção mostra apenas
+   "refeição média de 20–25 € por pessoa".
+   → Enviar os **preços reais por prato**, ou confirmar que se mantém só o
+   intervalo 20–25 €. (Campo `price` em cada item de `menu` em `src/lib/site.ts`.)
+
+3. **Reserva Google.** `site.reserveUrl` aponta para a pesquisa genérica da ficha
+   Google, **não** para o link directo de "Reservar mesa".
+   → Enviar o **link Google Reserve correcto** (`google.com/maps/reserve/...`).
+
+4. **WhatsApp.** `site.whatsappNumber` está a `null`, por isso o botão de WhatsApp
+   não aparece (só o telefone `tel:`). Não assumimos que o fixo 21 826 5057 tem
+   WhatsApp.
+   → Confirmar se existe um **número WhatsApp Business**; se sim, indicá-lo
+   (formato internacional sem "+" nem espaços, ex. `351912345678`).
+
+### Notas
+
+- **Avaliações:** as três em `reviews` são reais, do perfil Google do RAIZ
+  (traduzidas para pt-PT quando o original estava em inglês).
+- **Fotografia:** as imagens vêm do Instagram do RAIZ; trocar por fotografia de
+  sala/ambiente quando existir. O logótipo (`public/img/logo.jpg`) também é o
+  favicon e a imagem de partilha (Open Graph).
