@@ -85,54 +85,65 @@ export type Dish = {
   alt: string
 }
 
+// Cada prato usa a fotografia real correspondente (o nome do prato está no
+// nome do ficheiro em public/img/). Preços a confirmar com o cliente — por agora
+// mostramos apenas a referência "refeição média" na secção do menu.
 export const menu: Dish[] = [
   {
-    name: 'Vieiras na braza',
+    name: 'Lingueirão à pil-pil',
     description:
-      'Vieiras grelhadas na brasa, manteiga de algas e um toque cítrico. O prato que toda a gente pede.',
-    price: '16 €',
-    image: '/img/menu-vieiras.jpg',
-    alt: 'Vieiras grelhadas na brasa com couve e coentros num prato de porcelana azul',
+      'Lingueirão salteado em azeite, alho e malagueta, ligado num pil-pil bem montado. Para começar como deve ser.',
+    image: '/img/menu-lingueirao-pil-pil.jpg',
+    alt: 'Lingueirões grelhados alinhados num prato azul willow, regados com azeite de ervas',
   },
   {
-    name: 'Lomo saltado',
+    name: 'Pica-pau de atum',
     description:
-      'Lombo de vaca maturado, salteado no wok, cebola roxa em pickle e o seu próprio jus.',
-    price: '19 €',
-    image: '/img/menu-lomo.jpg',
-    alt: 'Fatias de lombo de vaca grelhado com cebola roxa e molho num prato de aro vermelho',
+      'Tacos de atum corados no ponto, molho de manteiga e pickles, com batata frita à parte. Um petisco para partilhar.',
+    image: '/img/menu-picapau-atum.jpg',
+    alt: 'Tacos de atum corado num prato de vidro com molho, ao lado de uma taça de batata frita',
   },
   {
-    name: 'Bacalhau à Brás de raiz',
+    name: 'Queijo da Maçussa',
     description:
-      'A nossa leitura do clássico: lascas de bacalhau, batata palha crocante, gema curada e azeite.',
-    price: '17 €',
-    image: '/img/menu-bacalhau.jpg',
-    alt: 'Releitura de bacalhau à brás com batata crocante e coentros num prato azul e branco',
+      'Tártaro de novilho picado à faca sob um manto de queijo da Maçussa curado, gema e pão torrado na brasa.',
+    image: '/img/menu-queijo-macussa.jpg',
+    alt: 'Tártaro de novilho coberto de queijo curado ralado e cebolinho, com torradas ao lado',
   },
   {
-    name: 'Arancino',
+    name: 'Couve à alhada',
     description:
-      'Esfera de arroz cremosa e estaladiça, recheio do dia e emulsão de ervas frescas.',
-    price: '9 €',
-    image: '/img/menu-arancino.jpg',
-    alt: 'Arancino dourado e estaladiço sobre prato florido vintage',
+      'Couve-coração grelhada na brasa, refogada com alho e algas, broa torrada e um fio de malagueta.',
+    image: '/img/menu-couve-alhada.jpg',
+    alt: 'Couve-coração grelhada com refogado de couve, coentros e broa torrada num prato azul willow',
   },
   {
-    name: 'Barriga de porco estaladiça',
+    name: 'Arroz de forno',
     description:
-      'Cozinhada em baixa temperatura, pele estaladiça, guarnição de época e molho encorpado.',
-    price: '18 €',
-    image: '/img/menu-porco.jpg',
-    alt: 'Tiras de barriga de porco com pele estaladiça e molho num prato azul willow',
+      'Arroz assado no forno em cazuela de barro, beterraba, cebola roxa em pickle e ervas frescas. Conforto com assinatura.',
+    image: '/img/menu-arroz-de-forno.jpg',
+    alt: 'Cazuela de barro com arroz assado, beterraba assada e cebola roxa em pickle',
   },
   {
-    name: 'Leite-creme queimado',
+    name: 'Magret de pato',
     description:
-      'Leite-creme cremoso com crosta caramelizada na hora e fruta da estação. Assim se acaba uma refeição.',
-    price: '6 €',
-    image: '/img/menu-leitecreme.jpg',
-    alt: 'Sobremesa de leite-creme com merengue queimado e fruta vermelha',
+      'Peito de pato laqueado e fatiado no ponto rosado, com salada de laranja e agrião.',
+    image: '/img/menu-magret-pato.jpg',
+    alt: 'Fatias de peito de pato laqueado com salada de laranja e agrião num prato de loiça azul',
+  },
+  {
+    name: 'Nectarina com nata fresca',
+    description:
+      'Nectarina grelhada e caramelizada, crocante de frutos secos e uma quenelle de nata fresca batida na hora.',
+    image: '/img/menu-nectarina-nata.jpg',
+    alt: 'Gomos de nectarina grelhada com crocante de frutos secos sobre nata fresca batida',
+  },
+  {
+    name: 'Torta do Tóni',
+    description:
+      'A torta de sempre, fofa e húmida, com raspa de citrinos e flor de sal. Receita do Tóni, claro.',
+    image: '/img/menu-torta-toni.jpg',
+    alt: 'Fatia de torta enrolada dourada com raspa de citrinos e flor de sal num prato vintage',
   },
 ]
 
